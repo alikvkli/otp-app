@@ -1,0 +1,29 @@
+<!-- OTP Input Component -->
+<form id="otp-form" (submit)="$event.preventDefault()">
+  <div class="otp-input-container" (paste)="onPaste($event)">
+    <div class="otp-input-field" *ngFor="let control of otpForm; let i = index">
+      <input
+        #otpInput
+        type="text"
+        [formControl]="control"
+        [ngClass]="inputClass"
+        [ngStyle]="inputStyles"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        maxlength="1"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        (keydown)="onKeyDown($event, i)"
+        (keyup)="onKeyUp($event, i)"
+        (input)="onInput(i)"
+      />
+    </div>
+  </div>
+
+  <!-- Hidden input for Web OTP API -->
+  <input 
+    type="text" 
+    autocomplete="one-time-code" 
+    style="position: absolute; opacity: 0; pointer-events: none;"
+  >
+</form> 

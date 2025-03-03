@@ -1,0 +1,45 @@
+<div class="otp-info-container">
+  <div class="otp-info-card">
+    <h2>Web OTP API Bilgileri</h2>
+    
+    <div class="info-section">
+      <h3>Cihaz Uyumluluğu</h3>
+      <p>
+        <strong>Web OTP API Destekleniyor:</strong> {{ isWebOtpSupported ? 'Evet' : 'Hayır' }}
+      </p>
+      <p>
+        <strong>Android Cihaz:</strong> {{ isAndroid ? 'Evet' : 'Hayır' }}
+      </p>
+      <p>
+        <strong>Chrome Tarayıcı:</strong> {{ isChrome ? 'Evet' : 'Hayır' }}
+      </p>
+      <p *ngIf="!isWebOtpSupported" class="warning">
+        Web OTP API bu cihazda desteklenmiyor. Web OTP API'nin çalışması için Android cihazda Chrome tarayıcısı kullanmanız gerekmektedir.
+      </p>
+    </div>
+    
+    <div class="info-section">
+      <h3>SMS Format Gereksinimleri</h3>
+      <p>Web OTP API'nin çalışması için SMS'in aşağıdaki formatta olması gerekmektedir:</p>
+      <pre>{{ smsFormat }}</pre>
+      
+      <p>Önemli Noktalar:</p>
+      <ul>
+        <li>SMS'in son satırında <strong>@{{ domain }}</strong> ve ardından <strong>#</strong> işareti ve OTP kodu olmalıdır.</li>
+        <li>SMS'in toplam uzunluğu 140 karakteri geçmemelidir.</li>
+        <li>OTP kodu 4-10 karakter uzunluğunda olmalıdır.</li>
+      </ul>
+    </div>
+    
+    <div class="info-section">
+      <h3>Sorun Giderme</h3>
+      <p>Eğer OTP otomatik olarak doldurulmuyorsa:</p>
+      <ol>
+        <li>SMS'in doğru formatta olduğundan emin olun.</li>
+        <li>Android cihazda Chrome tarayıcısı kullandığınızdan emin olun.</li>
+        <li>Tarayıcının izinlerini kontrol edin.</li>
+        <li>Sayfayı yenileyin ve tekrar deneyin.</li>
+      </ol>
+    </div>
+  </div>
+</div> 
